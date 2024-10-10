@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+enum Candidate
+class Election{
+    - {static} Election instance
+    - int trump, biden
+    - List<String> users
+    - Election()
+    + {static} Election getInstance()
+    + void vote (Candidate candidate, String userName)
+    + void result();
+}
+
+class User{
+    - String name
+    + void vote(Candidate candidate)
+}
+
+User ..> Election
+
+MainVote *--> User
+
+note left of User::vote
+ 1. Tạo một instance của Election
+ 2. Gọi phương thức vote trên instance để bầu chọn
+end note
+
+note left of Election
+    Singletion
+end note
+
+note left of Election::vote
+    if(users không có userName)
+    thêm userName vaò users
+    kiểm tra candidate:
+     Nếu là TRUMP: tăng trump
+     Ngược lại: tăng biden
+end note
+@enduml

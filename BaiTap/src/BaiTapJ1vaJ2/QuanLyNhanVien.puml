@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IQuanLy{
+ void add(NhanVien nv);
+ void inDS();
+ }
+class QuanLyNhanVien
+class NhanVien{
+String ten;
+int tuoi;
+String diaChi;
+double luong;
+int tongSoGioLam;
+}
+
+IQuanLy <|.. QuanLyNhanVien
+QuanLyNhanVien *--> NhanVien
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class ChuyenXe {
+  - maSoChuyen: String
+  - hoTenTaiXe: String
+  - soXe: String
+  - doanhThu: double
+  + getDoanhThu(): double
+  + inThongTin(): void
+}
+
+class XeNoiThanh {
+  - soTuyen: int
+  - soKmDiDuoc: double
+  + inThongTin(): void
+}
+
+class XeNgoaiThanh {
+  - noiDen: String
+  - soNgayDi: int
+  + inThongTin(): void
+}
+
+class QuanLyChuyenXe {
+  - danhSachChuyenXe: ArrayList<ChuyenXe>
+  + themChuyenXe(chuyenXe: ChuyenXe): void
+  + inDanhSachChuyenXe(): void
+  + tinhDoanhThuNoiThanh(): double
+  + tinhDoanhThuNgoaiThanh(): double
+  + tinhTongDoanhThu(): double
+}
+
+ChuyenXe <|-- XeNoiThanh
+ChuyenXe <|-- XeNgoaiThanh
+QuanLyChuyenXe --> ChuyenXe
+@enduml

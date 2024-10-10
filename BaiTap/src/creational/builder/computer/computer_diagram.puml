@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Computer{
+    String cpu,ram,storage,screen
+    # Computer(Builder b)
+    + String toString()
+}
+class Builder{
+    String cpu,ram,storage,screen
+    + Builder buildCPU(String cpu);
+    + Builder buildRAM(String ram);
+    + Builder buildStorage(String storage);
+    + Builder buildScreen(String screen);
+    + Computer build();
+}
+
+Builder ..>Computer
+@enduml

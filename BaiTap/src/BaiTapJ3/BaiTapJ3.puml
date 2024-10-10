@@ -1,0 +1,24 @@
+@startuml
+abstract class SinhVienNTU {
+    - String hoTen
+    - String nganh
+
+    + SinhVienNTU(hoten, nganh)
+    + getDiemTB()
+    + String getHocLuc()
+    + void inThongTin()
+}
+
+class SinhVienIT {
+    - float diemJava, diemHtml, diemCss
+
+}
+
+class SinhVienBiz {
+    - float diemMarketing, diemSales
+
+}
+
+SinhVienNTU <|-- SinhVienIT
+SinhVienNTU <|-- SinhVienBiz
+@enduml

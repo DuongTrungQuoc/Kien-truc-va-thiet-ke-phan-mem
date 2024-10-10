@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+enum PizzaType
+abstract class Pizza{
+    #StringBuilder pizza
+    #{abstract} void prepare()
+    #{abstract} void bake()
+    #{abstract} void cut()
+    #{abstract} void box()
+    +String toString()
+}
+
+abstract class PizzaStore{
+    #{abstract} Pizza createPizza(PizzaType type)
+    +Pizza orderPizza(PizzaType type)
+}
+
+PizzaStore <|-- VN_PizzaFactory
+PizzaStore <|-- OppaPizza
+Pizza <|-- PizzaM
+Pizza <|-- PizzaHS
+Pizza <.. PizzaStore
+@enduml
