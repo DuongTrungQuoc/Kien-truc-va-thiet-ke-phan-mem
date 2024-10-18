@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class HoaDon{
+ # HoaDon(Builder builder)
+}
+class Builder{
++ Builder setHeader(String maHD, String ngayBan, String tenKH)
++ Builder addCTHD(String sp,int, sl, int gia)
++ HoaDon build()
+}
+class HoaDonHeader
+class CTHD
+
+HoaDon --> "header"HoaDonHeader
+HoaDon *--> "cthds" CTHD
+HoaDon ..> Builder
+Builder --> "header"HoaDonHeader
+Builder *-->"cthds" CTHD
+
+@enduml
