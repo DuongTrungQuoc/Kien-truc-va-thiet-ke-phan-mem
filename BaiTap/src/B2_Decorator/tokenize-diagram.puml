@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface ITokenize {
+    + List<String> tokenize()
+}
+
+class TachTu {
+    + String s
+    + List<String> tokenize()
+}
+
+abstract class TokenDecorator {
+    + List<String> tokenize()
+}
+
+class LoaiBoTuDung {
+}
+
+class LoaiBoDauCau {
+}
+
+ITokenize <|.. TachTu
+ITokenize <|.. TokenDecorator : tokens
+TokenDecorator <|-- LoaiBoTuDung
+TokenDecorator <|-- LoaiBoDauCau
+
+TokenDecorator --> ITokenize
+
+
+@enduml

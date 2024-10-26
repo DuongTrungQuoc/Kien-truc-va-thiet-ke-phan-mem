@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Observer {
+  + nhanThongBao(msg: string)
+}
+
+class ATM {
+  + duaTheVao(the: TheATM)
+  + rutTien(soTien: int)
+  + traThe()
+  + themTaiKhoan(observer: Observer)
+  + xoaTaiKhoan(observer: Observer)
+  + thongBao(msg: string)
+}
+
+class TaiKhoan implements Observer {
+  - soDu : int
+  + kiemTraSoDu(soTien: int) : bool
+  + nhanThongBao(msg: string)
+}
+
+class TheATM {
+  - soThe : string
+  - chuThe : string
+}
+
+ATM --> TaiKhoan : kiemTraSoDu()
+ATM o--> Observer : thongBao()
+ATM --> TheATM : duaTheVao(), traThe()
+
+@enduml

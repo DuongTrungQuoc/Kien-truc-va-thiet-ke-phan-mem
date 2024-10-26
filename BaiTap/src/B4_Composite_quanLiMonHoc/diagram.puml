@@ -1,0 +1,23 @@
+@startuml
+
+abstract class KeHoachHocTap {
+    - String ten
+    + void add(KeHoachHocTap k)
+    + void remove(KeHoachHocTap k)
+    + int getSoTC()
+    + int getHP()
+    + String thongTin()
+}
+
+class MonHoc {
+    - int soTC
+    - int hp
+}
+
+class KeHoachChung {
+}
+
+KeHoachHocTap <|-- MonHoc
+KeHoachHocTap <|-- KeHoachChung
+
+@enduml
