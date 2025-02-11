@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+abstract NhanVienF88{
+String ten, chucVu;
+int hanMucChoVay;
++ void duyetKhoanVay(int soTienVay)
++ void NhanVienF88 capTren(NhanVienF88 nv)
+}
+class NhanVien{}
+class ChuTich{}
+
+note left of ChuTich{
+Phuong thuc duyetKhoanVay
+Neu soTienVay <= hanMucChoVay
+in: Chu tich duyet muc cho vay
+nguoc lai
+out: eximbank cho vay
+}
+
+note right of NhanVien{
+Phuong thuc duyetKhoanVay
+Neu soTienVay <= hanMucChoVay
+in: Chuc vu nhan vien duyet muc vay soTienVay
+nguoc lai
+chuyen khoan vay cho cap tren
+}
+ChuTich --|> NhanVienF88
+NhanVien --|> NhanVienF88
+NhanVien --> NhanVienF88
+@enduml

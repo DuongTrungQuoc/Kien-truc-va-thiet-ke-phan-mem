@@ -1,0 +1,61 @@
+@startuml
+title Strategy Pattern for Shopping Cart
+
+interface PaymentStrategy {
+    + calculateDiscount(double totalPrice) : double
+}
+
+class CODPayment implements PaymentStrategy {
+    + calculateDiscount(double totalPrice) : double
+}
+
+class AirpayPayment implements PaymentStrategy {
+    + calculateDiscount(double totalPrice) : double
+}
+
+class MasterCardPayment implements PaymentStrategy {
+    + calculateDiscount(double totalPrice) : double
+}
+
+interface PromotionStrategy {
+    + applyPromotion(double totalPrice) : double
+}
+
+class PercentagePromotion implements PromotionStrategy {
+    - percentage : double
+    - maxDiscount : double
+    + applyPromotion(double totalPrice) : double
+}
+
+class FixedAmountPromotion implements PromotionStrategy {
+    - fixedAmount : double
+    + applyPromotion(double totalPrice) : double
+}
+
+class Product {
+    - name : String
+    - quantity : int
+    - price : double
+    + getTotalPrice() : double
+}
+
+class Cart {
+    - products : List<Product>
+    - paymentStrategy : PaymentStrategy
+    - promotionStrategy : PromotionStrategy
+    + addProduct(Product product) : void
+    + setPaymentStrategy(PaymentStrategy paymentStrategy) : void
+    + setPromotionStrategy(PromotionStrategy promotionStrategy) : void
+    + checkout() : void
+}
+
+Cart --> "1..*" Product
+Cart --> "1" PaymentStrategy
+Cart --> "1" PromotionStrategy
+PaymentStrategy <|.. CODPayment
+PaymentStrategy <|.. AirpayPayment
+PaymentStrategy <|.. MasterCardPayment
+PromotionStrategy <|.. PercentagePromotion
+PromotionStrategy <|.. FixedAmountPromotion
+
+@enduml

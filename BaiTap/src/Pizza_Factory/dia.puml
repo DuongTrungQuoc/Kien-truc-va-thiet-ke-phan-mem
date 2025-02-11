@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Pizza {
+    + String getName()
+    + void prepare()
+    + void bake()
+    + void cut()
+    + void box()
+}
+
+abstract class AbstractPizza implements Pizza {
+    - String name
+    + String getName()
+    + void prepare()
+    + void bake()
+    + void cut()
+    + void box()
+}
+
+class CheesePizza extends AbstractPizza {
+    + String getName()
+}
+
+class PepperoniPizza extends AbstractPizza {
+    + String getName()
+}
+
+class VeggiePizza extends AbstractPizza {
+    + String getName()
+}
+
+class PizzaFactory {
+    + Pizza createPizza(String type)
+    + Pizza orderPizza(String type)
+}
+
+PizzaFactory "1" *-- "0..*" Pizza
+PizzaFactory "1" -- "1" CheesePizza
+PizzaFactory "1" -- "1" PepperoniPizza
+PizzaFactory "1" -- "1" VeggiePizza
+
+@enduml

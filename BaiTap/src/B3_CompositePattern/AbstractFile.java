@@ -8,13 +8,9 @@ abstract class AbstractFile {
     this.name = name;
     this.createDate = createDate;
   }
-  public void add(AbstractFile file) {
-    throw new UnsupportedOperationException("Không thể thêm vào đối tượng này");
-  }
+  public void add(AbstractFile file) {}
 
-  public void remove(AbstractFile file) {
-    throw new UnsupportedOperationException("Không thể xóa đối tượng này");
-  }
+  public void remove(AbstractFile file) {}
 
   public abstract String getPath();
 

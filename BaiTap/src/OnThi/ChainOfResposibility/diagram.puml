@@ -1,0 +1,34 @@
+@startuml
+interface Handler {
+    + setNext(handler: Handler): void
+    + handleRequest(amount: double, project: String): void
+}
+
+abstract class AbstractHandler implements Handler {
+    - nextHandler: Handler
+    + setNext(handler: Handler): void
+    + handleRequest(amount: double, project: String): void
+}
+
+class DeputyManager extends AbstractHandler {
+    + handleRequest(amount: double, project: String): void
+}
+
+class Manager extends AbstractHandler {
+    + handleRequest(amount: double, project: String): void
+}
+
+class Director extends AbstractHandler {
+    + handleRequest(amount: double, project: String): void
+}
+
+class Chairman extends AbstractHandler {
+    + handleRequest(amount: double, project: String): void
+}
+
+Client -> AbstractHandler
+AbstractHandler <|-- DeputyManager
+AbstractHandler <|-- Manager
+AbstractHandler <|-- Director
+AbstractHandler <|-- Chairman
+@enduml

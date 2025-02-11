@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IChatMediator {
+    +void register(ChatUser user)
+    +void unregister(ChatUser user)
+    +void sendMessage(String message, ChatUser from, String toId)
+    +void sendBroadcast(String message, ChatUser from)
+}
+
+class ChatMediator implements IChatMediator {
+    -HashMap<String, ChatUser> userMaps
+
+}
+
+abstract class ChatUser {
+    - String id
+    - String name
+
+    +void register()
+    +void unregister()
+    +void sendMessage(String message, String toId)
+    +void sendBroadcast(String message)
+    +void receive(String message, ChatUser from)
+}
+
+class ChatSimpleUser extends ChatUser {
+}
+
+ChatMediator "1" --> "*" ChatUser : users
+ChatUser --> IChatMediator : mediator
+
+
+@enduml

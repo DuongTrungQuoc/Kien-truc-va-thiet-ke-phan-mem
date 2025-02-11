@@ -1,0 +1,24 @@
+@startuml
+
+class MyStream<T> {
+    - List<Listener<T>> listeners
+    - List<T> events
+    + void addEvent(T event)
+    + void addListener(Listener<T> listener)
+    + void notifyListeners(T event)
+}
+
+
+interface Listener<T> {
+    + void update(T event)
+}
+
+
+class Client implements Listener<String> {
+}
+
+
+MyStream --> Listener
+MyStream <-- Client
+
+@enduml

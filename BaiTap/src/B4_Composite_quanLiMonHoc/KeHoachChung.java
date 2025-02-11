@@ -40,6 +40,7 @@ public class KeHoachChung extends KeHoachHocTap{
 
   @Override
   public String thongTin() {
+
     StringBuilder info = new StringBuilder(ten + "\n");
     for (KeHoachHocTap component : components) {
       info.append("  ").append(component.thongTin()).append("\n");

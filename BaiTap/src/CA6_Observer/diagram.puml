@@ -1,0 +1,25 @@
+@startuml
+interface Observer {
+    +update(thoiGian: int, countdown: int, grade: int)
+}
+
+class PlayerData {
+    -thoiGian: int
+    -countdown: int
+    -grade: int
+    -observers: List<Observer>
+    +addObserver(observer: Observer): void
+    +removeObserver(observer: Observer): void
+    +setThoiGian(thoiGian: int): void
+    +setCountdown(countdown: int): void
+    +setGrade(grade: int): void
+    -notifyObservers(): void
+}
+
+class Dashboard {
+    +update(thoiGian: int, countdown: int, grade: int): void
+}
+
+PlayerData  --  Observer : "notify"
+Dashboard ..|> Observer
+@enduml
